@@ -1,0 +1,42 @@
+﻿name:                regexp-to-automaton
+version:             0.1.0.0
+license:             BSD3
+author:              "Egor Pugachev"
+maintainer:          "s02230225@gse.cs.msu.ru"
+copyright:           "2026 Egor Pugachev"
+
+extra-source-files:
+- README.md
+
+description:         Преобразователь регулярной грамматики в конечный автомат
+
+dependencies:
+- base >= 4.7 && < 5
+- split >= 0.2.3
+- containers >= 0.6
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - Automaton
+  - Grammar
+  - Convert
+  - Determinize
+
+executables:
+  regexp-to-automaton-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - regexp-to-automaton
+
+tests:
+  automata-tests:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+    - regexp-to-automaton
